@@ -1,25 +1,22 @@
 expression = input()
-
-parenthesses = {
-    "(" : ")",
-    "{" : "}",
-    "[" : "]"
-}
 stack = []
+brackets_map = {')': '(', ']': '[', '}': '{'}
+is_balanced = True
 
 for char in expression:
-    if char in parenthesses:
+    if char in "({[":
         stack.append(char)
-    elif char in parenthesses.values():
+    elif char in ")}]":
         if not stack:
-            print("NO")
+            is_balanced = False
             break
-        last_operator = stack.pop()
-        if parenthesses[last_operator] != char:
-            print("NO")
+        
+        last_open = stack.pop()
+        if last_open != brackets_map[char]:
+            is_balanced = False
             break
+
+if is_balanced and not stack:
+    print("YES")
 else:
-    if stack:
-        print("NO")
-    else:
-        print("YES")
+    print("NO")
