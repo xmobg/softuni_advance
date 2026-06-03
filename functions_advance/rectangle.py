@@ -1,0 +1,11 @@
+def rectangle(l, w):
+    if not isinstance(l, int) or not isinstance(w, int):
+        return "Enter valid values!"
+
+    def area():
+        return l * w
+
+    def perimeter():
+        return 2 * (l + w)
+
+    return f"Rectangle area: {area()}\nPerimeter: {perimeter()}"
